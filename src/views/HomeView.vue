@@ -18,7 +18,7 @@
     <CardGalleryAll direction="reverse">
       <template #title>啟程</template>
       <template #description>
-        愚者的召喚來自於魔術師。（The Magician）與女祭司。（The High
+        愚者的召喚來自於魔術師（The Magician）與女祭司。（The High
         Priestess）。魔術師展示了人內在的神性和精神自由，女祭司則象徵神性的女性特質，代表著神秘的隱藏面向。這些形象成為愚者追歷的精神典範。然而，英雄也可能拒絕召喚，依戀於世俗的利益，如皇后（The
         Empress）與皇帝（The
         Emperor）所代表的享樂與權威，這些世俗誘惑可能成為愚者前往英雄歷程的障礙。
@@ -83,7 +83,7 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
-import CardGalleryAll from '@/components/CardGalleryAll.vue'
+import CardGalleryAll from '@/components/MajorPanel.vue'
 </script>
 
 <style scoped>

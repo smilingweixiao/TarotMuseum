@@ -1,6 +1,6 @@
 <template>
-  <div class="gallery-container">
-    <div class="gallery-content" :class="{ reverse: props.direction === 'reverse' }">
+  <div class="panel-container">
+    <div class="panel-content" :class="{ reverse: props.direction === 'reverse' }">
       <div class="title">
         <slot name="title">愚者</slot>
       </div>
@@ -28,13 +28,13 @@ const props = defineProps({
 })
 </script>
 <style scoped>
-.gallery-container {
+.panel-container {
   height: 80vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/landing.png');
   background-size: cover;
   background-position: center;
 }
-.gallery-content {
+.panel-content {
   display: flex;
   flex-direction: row;
   align-items: center;

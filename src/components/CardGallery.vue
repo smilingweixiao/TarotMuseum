@@ -34,6 +34,8 @@
   </div>
 </template>
 
+
+
 <script setup lang="ts">
 import Galleria from 'primevue/galleria'
 import { ref, onMounted } from 'vue'
