@@ -6,51 +6,73 @@
 
 <script setup lang="ts">
 import Menubar from 'primevue/menubar'
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
+
+const scrollToTop = () => {
+  document.body.scrollTo({ top: 0, behavior: 'smooth' })
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const props = defineProps({
+  scrollToIntro: {
+    type: Function,
+    default: () => {},
+  },
+  scrollToGallery: {
+    type: Function,
+    default: () => {},
+  },
+  scrollToMajorPanel: {
+    type: Function,
+    default: () => {},
+  },
+  scrollToMinorPanel: {
+    type: Function,
+    default: () => {},
+  },
+})
+
 const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
+    command: scrollToTop,
   },
   {
-    label: 'Features',
-    icon: 'pi pi-star',
+    label: 'Topic',
+    icon: 'pi pi-search',
+    items: [
+      {
+        label: 'Introduction',
+        icon: 'pi pi-info-circle',
+        command: props.scrollToIntro,
+      },
+
+      {
+        label: 'Journey Map',
+        icon: 'pi pi-map',
+        command: props.scrollToGallery,
+      },
+      {
+        label: 'The Major Arcana',
+        icon: 'pi pi-star-fill',
+        command: props.scrollToMajorPanel,
+      },
+      {
+        label: 'The Minor Arcana',
+        icon: 'pi pi-star',
+        command: props.scrollToMinorPanel,
+      },
+
+      {
+        label: 'More',
+        icon: 'pi pi-sparkles',
+      },
+    ],
   },
-  // {
-  //   label: 'Projects',
-  //   icon: 'pi pi-search',
-  //   items: [
-  //     {
-  //       label: 'Components',
-  //       icon: 'pi pi-bolt',
-  //     },
-  //     {
-  //       label: 'Blocks',
-  //       icon: 'pi pi-server',
-  //     },
-  //     {
-  //       label: 'UI Kit',
-  //       icon: 'pi pi-pencil',
-  //     },
-  //     {
-  //       label: 'Templates',
-  //       icon: 'pi pi-palette',
-  //       items: [
-  //         {
-  //           label: 'Apollo',
-  //           icon: 'pi pi-palette',
-  //         },
-  //         {
-  //           label: 'Ultima',
-  //           icon: 'pi pi-palette',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
   {
-    label: 'Contact',
-    icon: 'pi pi-envelope',
+    label: 'Story',
+    icon: 'pi pi-book',
   },
 ])
 </script>

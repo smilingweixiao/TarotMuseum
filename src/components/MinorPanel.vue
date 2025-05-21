@@ -12,6 +12,19 @@
     <div class="panel-card">
       <div class="panel-content"><div class="title">權杖</div></div>
     </div>
+    <div class="panel-description">
+      <div class="description">
+        <div class="font-medium">
+          Minor Arcana
+          由四組牌組成，分別是金幣（Pentacles）、聖杯（Cups）、寶劍（Swords）和權杖（Wands）。這些牌組象徵著不同的元素和生活領域，並且在每個組別中都有數字牌和宮廷牌。數字牌從
+          1 到 10，宮廷牌則包括 國王（Knight）、皇后（Queen）、騎士（King）和侍者（Page）。
+          <br />
+          <br />
+          每個元素的 Minor Arcana
+          牌組都代表著不同的生活領域和經驗，並且在占卜中提供了更具體的指導和洞察力。
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,7 +35,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: #f0f0f0;
   flex-wrap: wrap;
   gap: 20px;

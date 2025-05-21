@@ -9,7 +9,7 @@
       :showItemNavigatorsOnHover="true"
       :circular="true"
       :autoPlay="true"
-      :transitionInterval="3000"
+      :transitionInterval="2500"
       :activeIndex="activeIndex"
       @update:activeIndex="(val) => handleActiveIndexChange(val)"
     >
@@ -18,7 +18,11 @@
           :src="slotProps.item.thumbnailImageSrc"
           :alt="slotProps.item.alt"
           style="width: auto; display: block"
-          @click.capture="handleThumbnailClick(slotProps)"
+          @click.capture="
+            () => {
+              popupVisible = true
+            }
+          "
         />
       </template>
     </Galleria>
@@ -27,7 +31,7 @@
         <img
           :src="images[activeIndex].itemImageSrc"
           :alt="images[activeIndex].alt"
-          style="max-width: 40%; display: block"
+          style="max-height: 80vh; display: block"
         />
         <Button
           severity="secondary"
@@ -36,7 +40,7 @@
           aria-label="Cancel"
           icon="pi pi-times"
           @click="popupVisible = false"
-          style="position: absolute; top: 10px; right: 10px"
+          style="position: absolute; top: -40px; right: -40px"
         />
       </div>
     </div>
@@ -82,11 +86,6 @@ const handleActiveIndexChange = (index: number) => {
   }
 }
 
-const handleThumbnailClick = (slotProps: any) => {
-  // popupEl.imageSrc = slotProps.item.itemImageSrc
-  popupVisible.value = true
-}
-
 const props = defineProps({
   activateCallback: {
     type: Function,
@@ -119,12 +118,13 @@ const props = defineProps({
 
 .card-popup-content {
   position: relative;
-  width: fit-content;
-  height: fit-content;
-  max-width: max-content;
+  /* /* width: fit-content;
+  height: fit-content; */
+  /* max-width: max-content; */
+  max-height: max-content;
 
-  /* width: 80%;
-  height: 80%; */
+  /* width: 80%; */
+  /* height: 80%; */
   display: flex;
   justify-content: center;
   align-items: center;
