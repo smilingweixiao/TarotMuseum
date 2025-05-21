@@ -29,36 +29,49 @@ const props = defineProps({
 </script>
 <style scoped>
 .panel-container {
-  height: 80vh;
+  min-height: 60vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/landing.png');
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .panel-content {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  height: 100%;
+  /* align-items: stretch; */
   color: white;
+  flex: 1;
+
   .title {
     font-size: 4rem;
     font-weight: bold;
     text-align: center;
     padding-left: 10%;
     padding-right: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
   .description {
     font-size: 1rem;
     text-align: center;
     padding-left: 10%;
     padding-right: 10%;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px 40px;
-    height: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
   }
+
   &.reverse {
     flex-direction: row-reverse;
   }

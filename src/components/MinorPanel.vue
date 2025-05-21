@@ -17,4 +17,36 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.panel-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.panel-card {
+  min-width: 320px;
+  width: 20%;
+  height: 60vh;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+</style>

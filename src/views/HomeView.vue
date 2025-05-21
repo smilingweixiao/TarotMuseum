@@ -8,14 +8,14 @@
       </div>
     </div>
     <CardDisplay> </CardDisplay>
-    <CardGalleryAll>
+    <MajorPanel>
       <template #title>愚者</template>
       <template #description>
         首先，愚者（The
         Fool）的圖像是一個背著行囊、無畏站在懸崖邊緣的年輕人，象徵心靈準備冒險並探索未知世界的個體，可被視為榮格所說的愚者原型，代表無限的可能性和新旅程的開始。偉特將愚者形容為「求歷歷險的心靈」，等待著冒險的召喚，期待邁向更大的世界。這與坎伯所描述的英雄旅程相似：英雄離開日常生活，進入超自然奇蹟的領域，最終帶著給予同胞恩賜的力量回到現實世界。
       </template>
-    </CardGalleryAll>
-    <CardGalleryAll direction="reverse">
+    </MajorPanel>
+    <MajorPanel direction="reverse">
       <template #title>啟程</template>
       <template #description>
         愚者的召喚來自於魔術師（The Magician）與女祭司。（The High
@@ -31,8 +31,8 @@
         有了救援者的幫助，愚者準備迎向未知的考驗。坎伯將此階段稱為跨越第一道門檻，英雄要跨出限制自己的生活世界，踏入更大的未知領域。這道門檻由戰車（The
         Chariot）展現牌中的人物離開城堡，駕馭著神獸史賓克斯，展示了愚者邁向門檻的意志與決心。跨越這道門檻後，愚者面對的是更多的試煉和挑戰。
       </template>
-    </CardGalleryAll>
-    <CardGalleryAll>
+    </MajorPanel>
+    <MajorPanel>
       <template #title>啟蒙</template>
       <template #description>
         首先，力量（Strength）中的少女微彎身體向著獅子，象徵人與神性結合後展現的力量。偉特解釋，少女與獅的間的花圈象徵繪帝的律法，連結人與神的鏈條。少女向獅的退讓，象徵承認脆弱能喚起內在勇氣，是自我與本能的對話與覺察過程。隨後的隱士（The
@@ -46,8 +46,8 @@
         接下來的倒吊人（The Hanged
         Man），愚者在內外矛盾後，決定採取殉道者的態度，堅持信念，抵抗外力，成為群體中的他者，不再與群體為伍。但這也帶來逼近死亡的深淵，成為愚者最大的危機。走入倒吊人的態度後，愚者必須面對死亡考驗，死神（Death）描繪了走向更高精神的神秘死亡。圖像中的四個人物分別展現面對死亡的抗拒、歷情、逃避和放棄，但圖像彼岸的太陽升起，象徵永生。死神之後的節制（Temperance），以天使形象象徵精神世界，手拿聖杯，水在聖杯中流動，象徵走過死神後的新生命。
       </template>
-    </CardGalleryAll>
-    <CardGalleryAll direction="reverse">
+    </MajorPanel>
+    <MajorPanel direction="reverse">
       <template #title>回歸</template>
       <template #description>
         惡魔（The
@@ -65,7 +65,8 @@
         Judgement）中，天使的號角喚醒了亡者，代表著群體對神聖召喚的回應，愚者在世界(The
         World)完成轉化旅程，重新融入群體。
       </template>
-    </CardGalleryAll>
+    </MajorPanel>
+    <MinorPanel></MinorPanel>
   </div>
   <div class="footer">
     <div class="footer-content">
@@ -83,7 +84,8 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
-import CardGalleryAll from '@/components/MajorPanel.vue'
+import MajorPanel from '@/components/MajorPanel.vue'
+import MinorPanel from '@/components/MinorPanel.vue'
 </script>
 
 <style scoped>
