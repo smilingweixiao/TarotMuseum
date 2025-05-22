@@ -159,10 +159,10 @@ export async function getImages() {
   ]
 }
 
-// export async function randomGetImages() {
-//   const images = getImages()
-//   const randomIndex = Math.floor(Math.random() * images.length)
-//   return images[randomIndex]
-// }
+export async function randomGetImages() {
+  const images = await getImages()
+  const randomIndex = Math.floor(Math.random() * images.length)
+  return images[randomIndex]
+}
 
-export const PhotoService = { getImages }
+export const PhotoService = { getImages, randomGetImages }
