@@ -1,6 +1,7 @@
 <template>
   <div class="nav-bar">
     <NavBar
+      :scrollToTop="scrollToTop"
       :scrollToGallery="scrollToGallery"
       :scrollToMajorPanel="scrollToMajorPanel"
       :scrollToMinorPanel="scrollToMinorPanel"
@@ -16,10 +17,12 @@
     </div>
     <div class="intro-section" ref="introSection">
       <div class="intro-text" :class="{ visible: introVisible }">
-        <h2>關於...</h2>
+        <h2>關於</h2>
         <p>
           我學習塔羅占卜已經有四年。對多數人來說，塔羅總帶著一層神祕甚至誤解的色彩。我希望透過這次線上展覽，用說故事的方式向大眾介紹塔羅牌的文化背景與圖案象徵意義，讓人們認識塔羅真正的樣貌，也讓更多人發現，塔羅不只是占卜，更是一種自我對話的語言。
         </p>
+        <br />
+        <p>本次展覽將會聚焦在大阿爾克那的愚者之旅，帶領觀眾一同進入塔羅的世界</p>
       </div>
     </div>
     <CardDisplay ref="gallerySection"> </CardDisplay>
@@ -87,17 +90,7 @@
     </MajorPanel>
     <MinorPanel ref="MinorPanelSection"></MinorPanel>
   </div>
-  <div class="footer">
-    <div class="footer-content">
-      <p>© 2025 Tarot Exhibition. All rights reserved.</p>
-      <p>Designed by Ya-Hui Chang</p>
-    </div>
-    <!-- <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Contact Us</a>
-    </div> -->
-  </div>
+  <BottomFooter></BottomFooter>
 </template>
 
 <script setup lang="ts">
@@ -105,6 +98,7 @@ import NavBar from '@/components/NavBar.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
 import MajorPanel from '@/components/MajorPanel.vue'
 import MinorPanel from '@/components/MinorPanel.vue'
+import BottomFooter from '@/components/BottomFooter.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const introVisible = ref(false)
@@ -113,6 +107,10 @@ const gallerySection = ref<InstanceType<typeof CardDisplay> | null>(null)
 const majorPanelSection = ref<InstanceType<typeof MajorPanel> | null>(null)
 const MinorPanelSection = ref<InstanceType<typeof MinorPanel> | null>(null)
 
+const scrollToTop = () => {
+  document.body.scrollTo({ top: 0, behavior: 'smooth' })
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+}
 const scrollToIntro = () => {
   if (introSection.value) {
     introSection.value.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -165,13 +163,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-}
-
-.footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
 }
 
 .landing-section {

@@ -7,13 +7,14 @@
 <script setup lang="ts">
 import Menubar from 'primevue/menubar'
 import { ref, defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
-const scrollToTop = () => {
-  document.body.scrollTo({ top: 0, behavior: 'smooth' })
-  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
+const router = useRouter()
 const props = defineProps({
+  scrollToTop: {
+    type: Function,
+    default: () => {},
+  },
   scrollToIntro: {
     type: Function,
     default: () => {},
@@ -36,14 +37,14 @@ const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
-    command: scrollToTop,
+    command: props.scrollToTop,
   },
   {
     label: 'Topic',
     icon: 'pi pi-search',
     items: [
       {
-        label: 'Introduction',
+        label: 'About',
         icon: 'pi pi-info-circle',
         command: props.scrollToIntro,
       },
@@ -71,8 +72,13 @@ const items = ref([
     ],
   },
   {
-    label: 'Story',
-    icon: 'pi pi-book',
+    label: 'Fortune Telling',
+    icon: 'pi pi-sparkles',
+    command: () => {
+      router.push({ path: '/fortune-telling' })
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
 ])
 </script>

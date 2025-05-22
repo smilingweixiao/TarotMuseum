@@ -32,7 +32,11 @@
           :src="images[activeIndex].itemImageSrc"
           :alt="images[activeIndex].alt"
           style="max-height: 80vh; display: block"
+          class="content-img"
         />
+        <div class="content-text">
+          {{ images[activeIndex].alt }}
+        </div>
         <Button
           severity="secondary"
           variant="text"
@@ -118,15 +122,19 @@ const props = defineProps({
 
 .card-popup-content {
   position: relative;
-  /* /* width: fit-content;
-  height: fit-content; */
-  /* max-width: max-content; */
-  max-height: max-content;
 
-  /* width: 80%; */
-  /* height: 80%; */
+  max-height: max-content;
+  max-width: 60vw;
+
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+}
+.content-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
 }
 </style>
