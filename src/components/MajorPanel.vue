@@ -29,6 +29,7 @@ const props = defineProps({
 </script>
 <style scoped>
 .panel-container {
+  width: 100vw;
   min-height: 60vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/landing.png');
   background-size: cover;
@@ -41,19 +42,17 @@ const props = defineProps({
 .panel-content {
   display: flex;
   flex-direction: row;
-  /* align-items: stretch; */
+  width: 100%;
   color: white;
   flex: 1;
 
   .title {
     font-size: 4rem;
     font-weight: bold;
-    text-align: center;
     padding-left: 10%;
     padding-right: 10%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+
     align-items: center;
   }
 
@@ -66,7 +65,6 @@ const props = defineProps({
     padding-top: 60px;
     padding-bottom: 60px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 1;

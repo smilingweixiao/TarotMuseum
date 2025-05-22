@@ -1,7 +1,24 @@
 <template>
   <div class="panel-container">
-    <!-- <div class="panel-card">
-      <div class="panel-content"><div class="title">金幣</div></div>
+    <div class="panel-card">
+      <div class="panel-content">
+        <Galleria
+          :value="images"
+          :numVisible="5"
+          containerStyle="max-width: 640px"
+          :showThumbnails="false"
+          :showIndicators="true"
+          :changeItemOnIndicatorHover="true"
+        >
+          <template #item="slotProps">
+            <img
+              :src="slotProps.item.itemImageSrc"
+              :alt="slotProps.item.alt"
+              style="height: 40vh; display: block"
+            />
+          </template>
+        </Galleria>
+      </div>
     </div>
     <div class="panel-card">
       <div class="panel-content"><div class="title">聖杯</div></div>
@@ -11,7 +28,7 @@
     </div>
     <div class="panel-card">
       <div class="panel-content"><div class="title">權杖</div></div>
-    </div> -->
+    </div>
     <div class="panel-description">
       <div class="description-text">
         Minor Arcana
@@ -26,7 +43,16 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Galleria from 'primevue/galleria'
+import { PhotoService } from '@/service/PhotoService'
+import { ref, onMounted } from 'vue'
+const images = ref()
+
+onMounted(() => {
+  PhotoService.getImages().then((data) => (images.value = data))
+})
+</script>
 
 <style scoped>
 .panel-container {
@@ -43,6 +69,7 @@
 .panel-card {
   min-width: 320px;
   width: 20%;
+  /* height: fit-content; */
   height: 60vh;
   background-color: #fff;
   border-radius: 10px;
@@ -54,7 +81,8 @@
 
 .panel-content {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  max-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

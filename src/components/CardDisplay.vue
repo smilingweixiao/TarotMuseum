@@ -3,9 +3,9 @@
     <Stepper :value="curStep" class="basis-[80%]">
       <StepList class="display-header">
         <Step value="1">愚者</Step>
-        <Step value="2">顯意識：身</Step>
-        <Step value="3">淺意識：心</Step>
-        <Step value="4">超意識：靈</Step>
+        <Step value="2">啟程</Step>
+        <Step value="3">啟蒙</Step>
+        <Step value="4">回歸</Step>
       </StepList>
       <StepPanels>
         <StepPanel value="1">

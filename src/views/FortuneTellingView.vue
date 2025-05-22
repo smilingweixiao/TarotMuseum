@@ -10,10 +10,15 @@
   </div>
   <div class="chatroom-section">
     <div class="chatroom-illustration">
-      <img :src="image?.itemImageSrc" :alt="image?.alt" class="chatroom-image" />
+      <img
+        :src="image?.itemImageSrc"
+        :alt="image?.alt"
+        class="chatroom-image"
+        :style="randomFlip ? 'transform: rotate(-180deg);' : ''"
+      />
     </div>
     <div class="chatroom-box">
-      <Chatroom></Chatroom>
+      <Chatroom :image="image"></Chatroom>
     </div>
   </div>
   <BottomFooter></BottomFooter>
@@ -23,18 +28,21 @@
 import NavBar from '@/components/NavBar.vue'
 import BottomFooter from '@/components/BottomFooter.vue'
 import Chatroom from '@/components/Chatroom.vue'
+
 import { useRouter } from 'vue-router'
 import { PhotoService } from '@/service/PhotoService'
-import { onMounted, ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
+import type { Illustration } from '@/service/PhotoService'
 
 const router = useRouter()
+const image = ref<Illustration>()
+const randomFlip = ref<boolean>(Math.random(0, 1) < 0.5)
 
-const image = ref(null)
-
-onMounted(() => {
+onBeforeMount(() => {
   PhotoService.randomGetImages().then((data) => {
     image.value = data
   })
+  randomFlip.value = Math.random(0, 1) < 0.5
 })
 
 const scrollToTop = () => {
@@ -72,7 +80,6 @@ const scrollToMinorPanel = () => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* gap: 20px; */
 }
 .chatroom-illustration {
   width: 30%;
@@ -89,9 +96,7 @@ const scrollToMinorPanel = () => {
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  /* background-color: #ffffff; */
   padding: 20px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .chatroom-image {
