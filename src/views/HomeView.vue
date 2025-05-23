@@ -130,7 +130,7 @@ const scrollToMajorPanel = () => {
 }
 const scrollToMinorPanel = () => {
   if (MinorPanelSection.value) {
-    MinorPanelSection.value.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    MinorPanelSection.value.$el.scrollIntoView({ behavior: 'smooth' })
   }
 }
 

@@ -13,39 +13,27 @@ const router = useRouter()
 const props = defineProps({
   scrollToTop: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
   scrollToIntro: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
   scrollToGallery: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
   scrollToMajorPanel: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
   scrollToMinorPanel: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
   scrollToMore: {
     type: Function,
-    default: () => {
-      document.body.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    default: () => {},
   },
 })
 
@@ -53,7 +41,7 @@ const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
-    command: () => props.scrollToTop,
+    command: () => props.scrollToTop(),
   },
   {
     label: 'Topic',
@@ -62,29 +50,29 @@ const items = ref([
       {
         label: 'About',
         icon: 'pi pi-info-circle',
-        command: () => props.scrollToIntro,
+        command: () => props.scrollToIntro(),
       },
 
       {
         label: 'Journey Map',
         icon: 'pi pi-map',
-        command: () => props.scrollToGallery,
+        command: () => props.scrollToGallery(),
       },
       {
         label: 'The Major Arcana',
         icon: 'pi pi-star-fill',
-        command: () => props.scrollToMajorPanel,
+        command: () => props.scrollToMajorPanel(),
       },
       {
         label: 'The Minor Arcana',
         icon: 'pi pi-star',
-        command: () => props.scrollToMinorPanel,
+        command: () => props.scrollToMinorPanel(),
       },
 
       {
         label: 'More',
         icon: 'pi pi-sparkles',
-        command: () => props.scrollToMore,
+        command: () => props.scrollToMore(),
       },
     ],
   },
