@@ -6,6 +6,7 @@
       :scrollToMajorPanel="scrollToMajorPanel"
       :scrollToMinorPanel="scrollToMinorPanel"
       :scrollToIntro="scrollToIntro"
+      :scrollToMore="scrollToMore"
     ></NavBar>
   </div>
   <div class="main w-full h-full">
@@ -17,12 +18,16 @@
     </div>
     <div class="intro-section" ref="introSection">
       <div class="intro-text" :class="{ visible: introVisible }">
-        <h2>關於</h2>
-        <p>
-          我學習塔羅占卜已經有四年。對多數人來說，塔羅總帶著一層神祕甚至誤解的色彩。我希望透過這次線上展覽，用說故事的方式向大眾介紹塔羅牌的文化背景與圖案象徵意義，讓人們認識塔羅真正的樣貌，也讓更多人發現，塔羅不只是占卜，更是一種自我對話的語言。
-        </p>
-        <br />
-        <p>本次展覽將會聚焦在大阿爾克那的愚者之旅，帶領觀眾一同進入塔羅的世界</p>
+        <h2>{{ currentIntro.title }}</h2>
+        <p v-for="(para, i) in currentIntro.paragraphs" :key="i">{{ para }} <br /><br /></p>
+      </div>
+      <div class="dots">
+        <span
+          v-for="(intro, i) in intros"
+          :key="i"
+          :class="{ active: i === currentIntroIndex }"
+          @click="goToSlide(i)"
+        ></span>
       </div>
     </div>
     <CardDisplay ref="gallerySection"> </CardDisplay>
@@ -68,6 +73,15 @@
       >
     </MajorPanel>
     <MinorPanel ref="MinorPanelSection"></MinorPanel>
+    <div class="more" ref="moreSection">
+      <div class="more-text">
+        塔羅不只是占卜，更是一場與圖像與象徵的深層對話。每一張牌都是一幅蘊含情感與故事的藝術作品。<br />透過解牌聊天室，你將親自參與詮釋，與塔羅藝術建立連結，讓每一次占卜成為專屬於你的心靈旅程。
+      </div>
+      <div class="more-button">
+        <Button label="進入解牌聊天室" class="p-button-outlined" @click="goToChatroom" />
+        <!-- <router-link to="/chatroom">進入解牌聊天室</router-link> -->
+      </div>
+    </div>
   </div>
   <BottomFooter></BottomFooter>
 </template>
@@ -78,14 +92,22 @@ import CardDisplay from '@/components/CardDisplay.vue'
 import MajorPanel from '@/components/MajorPanel.vue'
 import MinorPanel from '@/components/MinorPanel.vue'
 import BottomFooter from '@/components/BottomFooter.vue'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { Button } from 'primevue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const introVisible = ref(false)
 const introSection = ref<HTMLElement | null>(null)
 const gallerySection = ref<InstanceType<typeof CardDisplay> | null>(null)
 const majorPanelSection = ref<InstanceType<typeof MajorPanel> | null>(null)
 const MinorPanelSection = ref<InstanceType<typeof MinorPanel> | null>(null)
-
+const moreSection = ref<HTMLElement | null>(null)
+const scrollToMore = () => {
+  if (moreSection.value) {
+    moreSection.value.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+}
 const scrollToTop = () => {
   document.body.scrollTo({ top: 0, behavior: 'smooth' })
   document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
@@ -108,29 +130,80 @@ const scrollToMajorPanel = () => {
 }
 const scrollToMinorPanel = () => {
   if (MinorPanelSection.value) {
-    MinorPanelSection.value.$el.scrollIntoView({ behavior: 'smooth' })
+    MinorPanelSection.value.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 }
 
-onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          introVisible.value = true
-        }
-      })
-    },
-    { threshold: 0.3 },
-  )
+const goToChatroom = () => {
+  router.push({ path: '/fortune-telling' })
+  document.body.scrollTo({ top: 0, behavior: 'smooth' })
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
-  if (introSection.value) {
-    observer.observe(introSection.value)
+const currentIntroIndex = ref(0)
+
+const intros = [
+  {
+    title: 'About Me',
+    paragraphs: [
+      '我學習塔羅占卜已經有四年。對多數人來說，塔羅總帶著一層神祕甚至誤解的色彩。我希望透過這次線上展覽，用說故事的方式向大眾介紹塔羅牌的文化背景與圖案象徵意義，讓人們認識塔羅真正的樣貌，也讓更多人發現，塔羅不只是占卜，更是一種自我對話的語言。',
+      '本次展覽將會聚焦在大阿爾克那的愚者之旅，透過分析塔羅牌的圖案內容，建立觀眾與塔羅的情感聯繫。',
+    ],
+  },
+  {
+    title: 'About The Major Arcana',
+    paragraphs: [
+      '大阿爾克那（Major Arcana）由22張象徵人生歷程的牌組成，是塔羅藝術中最具代表性的部分。每張牌都像是一幅獨立的畫作，透過構圖、色彩、人物動作與象徵符號，呈現出深層的精神意涵與哲學思考。',
+      '從愚者（The Fool）的起點出發，到世界（The World）的終點，每一張牌都是一個視覺化的旅程，帶領觀者探索成長、抉擇、試煉與覺醒。這不僅是一種占卜工具，更是一系列講述人類經驗的藝術品。',
+    ],
+  },
+  {
+    title: 'About The Minor Arcana',
+    paragraphs: [
+      '小阿爾克那（Minor Arcana）由56張牌組成，分為四個元素主題：金幣（Pentacles）、聖杯（Cups）、寶劍（Swords）、權杖（Wands）。每一組牌都以獨特的圖像語彙表達出物質、情感、思想與行動的多重層次。',
+      '這些細緻的插畫蘊含著大量的視覺符號與文化象徵，使每張牌在藝術層面上具有高度的可讀性與詮釋空間。透過人物姿態、背景構圖與色彩配置，小阿爾克那不僅補充了大阿爾克那的宏大敘事，也豐富了塔羅牌整體的藝術表現力。',
+    ],
+  },
+]
+
+const currentIntro = ref(intros[0])
+let intervalId: number | null = null
+
+const nextSlide = () => {
+  showSlide((currentIntroIndex.value + 1) % intros.length)
+  resetAutoSlide()
+}
+
+const startAutoSlide = () => {
+  intervalId = setInterval(() => {
+    nextSlide()
+  }, 10000)
+}
+
+const resetAutoSlide = () => {
+  if (intervalId !== null) {
+    clearInterval(intervalId)
   }
+  startAutoSlide()
+}
 
-  onBeforeUnmount(() => {
-    if (introSection.value) observer.unobserve(introSection.value)
-  })
+const showSlide = (index: number) => {
+  introVisible.value = false
+  setTimeout(() => {
+    currentIntroIndex.value = index
+    currentIntro.value = intros[index]
+    introVisible.value = true
+  }, 500)
+}
+
+const goToSlide = (index: number) => {
+  showSlide(index)
+  resetAutoSlide()
+}
+
+onMounted(() => {
+  showSlide(currentIntroIndex.value)
+  startAutoSlide()
 })
 </script>
 
@@ -167,10 +240,12 @@ onMounted(() => {
 .landing-text h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+  font-weight: bolder;
 }
 
 .landing-text p {
   font-size: 1.3em;
+  font-weight: bold;
 }
 
 .title {
@@ -185,17 +260,23 @@ onMounted(() => {
 
 .intro-section {
   height: 80vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/intro-bg.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('/intro-bg.jpg');
   background-size: cover;
   background-position: center;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 10%;
+  padding: 20px 10%;
 }
 .intro-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -211,11 +292,60 @@ onMounted(() => {
 .intro-text h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: bolder;
 }
 
 .intro-text p {
   font-size: 1.2rem;
   line-height: 1.6;
+  font-weight: bold;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 15px; */
+  margin-bottom: 15px;
+  gap: 8px;
+}
+
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dots span.active {
+  background-color: #f59e0b;
+}
+
+.dots span:hover {
+  background-color: #fbbf24;
+}
+
+.more {
+  /* center */
+  margin: 20px auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 10%;
+
+  /* background-color: #f0f0f0; */
+  border-radius: 20px;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: #f59e0b;
+}
+.more-text {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
 @keyframes typing {

@@ -13,23 +13,39 @@ const router = useRouter()
 const props = defineProps({
   scrollToTop: {
     type: Function,
-    default: () => {},
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
   scrollToIntro: {
     type: Function,
-    default: () => {},
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
   scrollToGallery: {
     type: Function,
-    default: () => {},
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
   scrollToMajorPanel: {
     type: Function,
-    default: () => {},
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
   scrollToMinorPanel: {
     type: Function,
-    default: () => {},
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+  },
+  scrollToMore: {
+    type: Function,
+    default: () => {
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+    },
   },
 })
 
@@ -37,7 +53,7 @@ const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
-    command: props.scrollToTop,
+    command: () => props.scrollToTop,
   },
   {
     label: 'Topic',
@@ -46,28 +62,29 @@ const items = ref([
       {
         label: 'About',
         icon: 'pi pi-info-circle',
-        command: props.scrollToIntro,
+        command: () => props.scrollToIntro,
       },
 
       {
         label: 'Journey Map',
         icon: 'pi pi-map',
-        command: props.scrollToGallery,
+        command: () => props.scrollToGallery,
       },
       {
         label: 'The Major Arcana',
         icon: 'pi pi-star-fill',
-        command: props.scrollToMajorPanel,
+        command: () => props.scrollToMajorPanel,
       },
       {
         label: 'The Minor Arcana',
         icon: 'pi pi-star',
-        command: props.scrollToMinorPanel,
+        command: () => props.scrollToMinorPanel,
       },
 
       {
         label: 'More',
         icon: 'pi pi-sparkles',
+        command: () => props.scrollToMore,
       },
     ],
   },
@@ -92,9 +109,4 @@ const items = ref([
   z-index: 999;
   background-color: rgba(255, 255, 255, 0.8);
 }
-
-/* .menubar-wrapper.scrolled {
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-} */
 </style>

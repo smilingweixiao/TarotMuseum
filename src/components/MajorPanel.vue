@@ -57,7 +57,7 @@ const props = defineProps({
   }
 
   .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
     padding-left: 10%;
     padding-right: 10%;

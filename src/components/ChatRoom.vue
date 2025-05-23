@@ -42,7 +42,7 @@ const question = ref<string>('大四的最後一學期快要結束了，我想�
 
 const props = withDefaults(
   defineProps<{
-    image: Illustration
+    image: Illustration | undefined
   }>(),
   {
     image: () => ({
@@ -65,9 +65,9 @@ const sendMessage = () => {
       .then((response) => {
         aiAnswer.value = response
       })
-      .catch((error) => {
-        console.error('Error sending message:', error)
-        aiAnswer.value = '抱歉，我無法處理您的請求。'
+      .catch(() => {
+        // console.error('Error sending message:', error)
+        aiAnswer.value = '抱歉，請嘗試聯繫伺服器管理員'
       })
   }
 }

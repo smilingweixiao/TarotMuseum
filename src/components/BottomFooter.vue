@@ -39,6 +39,6 @@
 
 .highlight {
   font-weight: bold;
-  color: pink;
+  color: #f59e0b;
 }
 </style>

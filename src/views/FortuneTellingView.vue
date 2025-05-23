@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue'
 import BottomFooter from '@/components/BottomFooter.vue'
-import Chatroom from '@/components/Chatroom.vue'
+import Chatroom from '@/components/ChatRoom.vue'
 
 import { useRouter } from 'vue-router'
 import { PhotoService } from '@/service/PhotoService'
@@ -36,13 +36,13 @@ import type { Illustration } from '@/service/PhotoService'
 
 const router = useRouter()
 const image = ref<Illustration>()
-const randomFlip = ref<boolean>(Math.random(0, 1) < 0.5)
+const randomFlip = ref<boolean>(Math.random() < 0.5)
 
 onBeforeMount(() => {
   PhotoService.randomGetImages().then((data) => {
     image.value = data
   })
-  randomFlip.value = Math.random(0, 1) < 0.5
+  randomFlip.value = Math.random() < 0.5
 })
 
 const scrollToTop = () => {
