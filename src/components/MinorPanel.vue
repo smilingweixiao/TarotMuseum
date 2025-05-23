@@ -3,31 +3,217 @@
     <div class="panel-card">
       <div class="panel-content">
         <Galleria
-          :value="images"
-          :numVisible="5"
-          containerStyle="max-width: 640px"
+          :value="pentsImages"
+          containerStyle="width:100%; border: none;"
           :showThumbnails="false"
           :showIndicators="true"
           :changeItemOnIndicatorHover="true"
+          indicatorsPosition="left"
+          :pt="{
+            root: { style: { height: '100%' } },
+            content: { style: { height: '100%' } },
+            itemsContainer: {
+              style: {
+                height: '100%',
+                padding: '15px 15px 15px 0',
+              },
+            },
+            items: {
+              style: { height: '100%' },
+            },
+            item: {
+              style: {
+                height: '100%',
+              },
+            },
+            indicatorList: {
+              style: {
+                width: '3.5vw',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 0,
+                flexGrow: 1,
+              },
+            },
+            indicator: {
+              style: {
+                flex: 1,
+                fontSize: '2.5vh',
+              },
+            },
+          }"
         >
           <template #item="slotProps">
             <img
               :src="slotProps.item.itemImageSrc"
               :alt="slotProps.item.alt"
-              style="height: 40vh; display: block"
+              style="object-fit: contain; display: block; height: 100%"
             />
           </template>
         </Galleria>
       </div>
     </div>
     <div class="panel-card">
-      <div class="panel-content"><div class="title">聖杯</div></div>
+      <div class="panel-content">
+        <Galleria
+          :value="cupsImages"
+          containerStyle="width:100%; border: none;"
+          :showThumbnails="false"
+          :showIndicators="true"
+          :changeItemOnIndicatorHover="true"
+          indicatorsPosition="left"
+          :pt="{
+            root: { style: { height: '100%' } },
+            content: { style: { height: '100%' } },
+            itemsContainer: {
+              style: { height: '100%', padding: '15px 15px 15px 0' },
+            },
+            items: {
+              style: { height: '100%' },
+            },
+            item: {
+              style: {
+                height: '100%',
+              },
+            },
+            indicatorList: {
+              style: {
+                width: '3.5vw',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 0,
+                flexGrow: 1,
+              },
+            },
+            indicator: {
+              style: {
+                flex: 1,
+                fontSize: '2.5vh',
+              },
+            },
+          }"
+        >
+          <template #item="slotProps">
+            <img
+              :src="slotProps.item.itemImageSrc"
+              :alt="slotProps.item.alt"
+              style="object-fit: contain; display: block; height: 100%"
+            />
+          </template>
+        </Galleria>
+      </div>
     </div>
     <div class="panel-card">
-      <div class="panel-content"><div class="title">寶劍</div></div>
+      <div class="panel-content">
+        <Galleria
+          :value="swordsImages"
+          containerStyle="width:100%; border: none;"
+          :showThumbnails="false"
+          :showIndicators="true"
+          :changeItemOnIndicatorHover="true"
+          indicatorsPosition="left"
+          :pt="{
+            root: { style: { height: '100%' } },
+            content: { style: { height: '100%' } },
+            itemsContainer: {
+              style: { height: '100%', padding: '15px 15px 15px 0' },
+            },
+            items: {
+              style: { height: '100%' },
+            },
+            item: {
+              style: {
+                height: '100%',
+              },
+            },
+            indicatorList: {
+              style: {
+                width: '3.5vw',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 0,
+                flexGrow: 1,
+              },
+            },
+            indicator: {
+              style: {
+                flex: 1,
+                fontSize: '2.5vh',
+              },
+            },
+          }"
+        >
+          <template #item="slotProps">
+            <img
+              :src="slotProps.item.itemImageSrc"
+              :alt="slotProps.item.alt"
+              style="object-fit: contain; display: block; height: 100%"
+            />
+          </template>
+        </Galleria>
+      </div>
     </div>
     <div class="panel-card">
-      <div class="panel-content"><div class="title">權杖</div></div>
+      <div class="panel-content">
+        <Galleria
+          :value="wandsImages"
+          containerStyle="width:100%; border: none;"
+          :showThumbnails="false"
+          :showIndicators="true"
+          :changeItemOnIndicatorHover="true"
+          indicatorsPosition="left"
+          :pt="{
+            root: { style: { height: '100%' } },
+            content: { style: { height: '100%' } },
+            itemsContainer: {
+              style: { height: '100%', padding: '15px 15px 15px 0' },
+            },
+            items: {
+              style: { height: '100%' },
+            },
+            item: {
+              style: {
+                height: '100%',
+              },
+            },
+            indicatorList: {
+              style: {
+                width: '3.5vw',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 0,
+                flexGrow: 1,
+              },
+            },
+            indicator: {
+              style: {
+                flex: 1,
+                fontSize: '2.5vh',
+              },
+            },
+          }"
+        >
+          <template #item="slotProps">
+            <img
+              :src="slotProps.item.itemImageSrc"
+              :alt="slotProps.item.alt"
+              style="object-fit: contain; display: block; height: 100%"
+            />
+          </template>
+        </Galleria>
+      </div>
     </div>
     <div class="panel-description">
       <div class="description-text">
@@ -47,10 +233,21 @@
 import Galleria from 'primevue/galleria'
 import { PhotoService } from '@/service/PhotoService'
 import { ref, onMounted } from 'vue'
+import type { display } from '@primeuix/themes/aura/inplace'
+import type { flattenDiagnosticMessageText } from 'typescript'
 const images = ref()
+
+const cupsImages = ref()
+const swordsImages = ref()
+const wandsImages = ref()
+const pentsImages = ref()
 
 onMounted(() => {
   PhotoService.getImages().then((data) => (images.value = data))
+  PhotoService.getCupsImages().then((data) => (cupsImages.value = data))
+  PhotoService.getSwordsImages().then((data) => (swordsImages.value = data))
+  PhotoService.getWandsImages().then((data) => (wandsImages.value = data))
+  PhotoService.getPentsImages().then((data) => (pentsImages.value = data))
 })
 </script>
 
@@ -60,6 +257,7 @@ onMounted(() => {
   justify-content: space-around;
   align-items: center;
   min-height: 80vh;
+  width: 100%;
   background-color: #f0f0f0;
   flex-wrap: wrap;
   gap: 20px;
@@ -69,7 +267,6 @@ onMounted(() => {
 .panel-card {
   min-width: 320px;
   width: 20%;
-  /* height: fit-content; */
   height: 60vh;
   background-color: #fff;
   border-radius: 10px;
@@ -80,13 +277,12 @@ onMounted(() => {
 }
 
 .panel-content {
-  width: 100%;
-  /* height: 100%; */
-  max-height: 100%;
+  width: fit-content;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 
 .panel-description {
