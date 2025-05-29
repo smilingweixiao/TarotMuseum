@@ -1,9 +1,11 @@
 <template>
   <div class="chat-room">
-    <div class="chat-header">
-      <!-- <h1>Chat Room</h1> -->
-    </div>
+    <div class="chat-header"></div>
     <div class="chat-body">
+      <div class="chat-intro">
+        <p>歡迎來到塔羅解牌聊天室！</p>
+        <p>身為塔羅占卜師，請根據左邊的牌卡內容，試著解讀下方的提問吧！</p>
+      </div>
       <div class="chat-question">
         <div class="question-text">{{ question }}</div>
       </div>
@@ -67,7 +69,8 @@ const sendMessage = () => {
       })
       .catch(() => {
         // console.error('Error sending message:', error)
-        aiAnswer.value = '抱歉，請嘗試聯繫伺服器管理員'
+        aiAnswer.value =
+          'Clone 我的 GitHub 專案，設定你的 OpenAI API Key，在本地啟動伺服器即可開始使用聊天室！ ( repo: https://github.com/smilingweixiao/TarotMuseum )'
       })
   }
 }
@@ -83,6 +86,18 @@ const sendMessage = () => {
 .chat-header {
   height: 60px;
 }
+
+.chat-intro {
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: #f59e0b;
+  text-align: center;
+}
+
 .chat-body {
   display: flex;
   flex-direction: column;

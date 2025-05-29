@@ -6,76 +6,43 @@
 
 <script setup lang="ts">
 import Menubar from 'primevue/menubar'
-import { ref, defineProps } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const props = defineProps({
-  scrollToTop: {
-    type: Function,
-    default: () => {},
-  },
-  scrollToIntro: {
-    type: Function,
-    default: () => {},
-  },
-  scrollToGallery: {
-    type: Function,
-    default: () => {},
-  },
-  scrollToMajorPanel: {
-    type: Function,
-    default: () => {},
-  },
-  scrollToMinorPanel: {
-    type: Function,
-    default: () => {},
-  },
-  scrollToMore: {
-    type: Function,
-    default: () => {},
-  },
-})
 
 const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
-    command: () => props.scrollToTop(),
+    command: () => {
+      router.push({ path: '/home' })
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+    to: '/home',
   },
   {
-    label: 'Topic',
-    icon: 'pi pi-search',
-    items: [
-      {
-        label: 'About',
-        icon: 'pi pi-info-circle',
-        command: () => props.scrollToIntro(),
-      },
-
-      {
-        label: 'Journey Map',
-        icon: 'pi pi-map',
-        command: () => props.scrollToGallery(),
-      },
-      {
-        label: 'The Major Arcana',
-        icon: 'pi pi-star-fill',
-        command: () => props.scrollToMajorPanel(),
-      },
-      {
-        label: 'The Minor Arcana',
-        icon: 'pi pi-star',
-        command: () => props.scrollToMinorPanel(),
-      },
-
-      {
-        label: 'More',
-        icon: 'pi pi-sparkles',
-        command: () => props.scrollToMore(),
-      },
-    ],
+    label: 'The Major Arcana',
+    icon: 'pi pi-star-fill',
+    command: () => {
+      router.push({ path: '/major-arcana' })
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+    to: '/major-arcana',
   },
+  {
+    label: 'The Minor Arcana',
+    icon: 'pi pi-star',
+    command: () => {
+      router.push({ path: '/minor-arcana' })
+      document.body.scrollTo({ top: 0, behavior: 'smooth' })
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+    to: '/minor-arcana',
+  },
+
   {
     label: 'Fortune Telling',
     icon: 'pi pi-sparkles',
@@ -84,6 +51,7 @@ const items = ref([
       document.body.scrollTo({ top: 0, behavior: 'smooth' })
       document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
     },
+    to: '/fortune-telling',
   },
 ])
 </script>
@@ -96,5 +64,7 @@ const items = ref([
   transition: background-color 0.3s ease;
   z-index: 999;
   background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
 }
 </style>

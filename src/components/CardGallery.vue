@@ -8,7 +8,7 @@
       :showItemNavigators="true"
       :showItemNavigatorsOnHover="true"
       :circular="true"
-      :autoPlay="true"
+      :autoPlay="false"
       :transitionInterval="2500"
       :activeIndex="activeIndex"
       @update:activeIndex="(val) => handleActiveIndexChange(val)"

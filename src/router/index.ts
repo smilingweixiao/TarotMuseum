@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FortuneTellingView from '../views/FortuneTellingView.vue'
+import MinorArcanaView from '../views/MinorArcanaView.vue'
+import MajorArcanaView from '../views/MajorArcanaView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,11 +16,19 @@ const router = createRouter({
     {
       path: '/fortune-telling',
       name: 'fortune-telling',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: FortuneTellingView,
       // component: () => import('../views/FortuneTellingView.vue'),
+    },
+    {
+      path: '/major-arcana',
+      name: 'major-arcana',
+      component: MajorArcanaView,
+    },
+
+    {
+      path: '/minor-arcana',
+      name: 'minor-arcana',
+      component: MinorArcanaView,
     },
   ],
 })
